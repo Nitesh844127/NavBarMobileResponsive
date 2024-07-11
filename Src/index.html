@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with search field</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .navbar img {
+            height: 30px;
+        }
+        .navbar .left-nav, .navbar .right-nav, .navbar .center-nav {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .right-nav a, .navbar .center-nav a {
+            margin-left: 10px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+        }
+        .navbar .right-nav a.join {
+            background-color: #007bff;
+            color: white;
+        }
+        .navbar .search-container {
+            display: none;
+            width: 100%;
+            justify-content: center;
+        }
+        .navbar .search-container input[type="text"] {
+            width: 50%;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .navbar .icon, .navbar .search-container .icon {
+            cursor: pointer;
+        }
+        @media screen and (max-width: 600px) {
+            .navbar .icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="navbar">
+    <div class="left-nav">
+        <span class="icon" onclick="toggleNav()"><img src="/Asset/menu_lines_hamburger_icon.svg" alt="menu_lines_hamburger_icon"></span>
+        <img src="/Asset/logo.jpeg" alt="Logo">
+    </div>
+    <div class="center-nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+    </div>
+    <div class="right-nav">
+        <a href="javascript:void(0);" onclick="toggleSearch()"><img src="/Asset/Search_Icon.png" alt="search"></a>
+        <a href="#" class="sign-in">Sign in</a>
+        <a href="#" class="join">Join</a>
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button>Find Advisor</button>
+        <span class="icon" onclick="toggleSearch()"><img src="/Asset/Arrow_icon.png" alt="search"></span>
+    </div>
+</div>
+</header>
+
+<script>
+    function toggleSearch() {
+        var searchContainer = document.querySelector('.search-container');
+        var leftNav = document.querySelector('.left-nav');
+        var centerNav = document.querySelector('.center-nav');
+        var rightNav = document.querySelector('.right-nav');
+        
+        if (searchContainer.style.display === "flex") {
+            searchContainer.style.display = "none";
+            leftNav.style.display = "flex";
+            centerNav.style.display = "flex";
+            rightNav.style.display = "flex";
+        } else {
+            searchContainer.style.display = "flex";
+            leftNav.style.display = "none";
+            centerNav.style.display = "none";
+            rightNav.style.display = "none";
+        }
+    }
+
+    function toggleNav() {
+        var centerNav = document.querySelector('.center-nav');
+        if (centerNav.style.display === "flex") {
+            centerNav.style.display = "none";
+        } else {
+            centerNav.style.display = "flex";
+        }
+    }
+</script>
+
+</body>
+</html>
